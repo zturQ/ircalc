@@ -1,0 +1,67 @@
+body{
+    font-family: 'Courier New', Courier, monospace;
+    font-style: normal;
+    background-color: #233D4D;
+}
+
+#main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10vh;
+}
+
+#input{
+    display: flex;
+    justify-content: center;
+    size: 90px;
+}
+
+#return{
+    display: flex;
+    justify-content: center;
+}
+
+#text{
+    color: #A1C181;
+}
+
+@keyframes spin{
+    from{ transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+#imagemlegau{
+    animation: spin 4s linear infinite;
+}
+
+.meme{
+    display: inline-block;
+    text-align: center;
+    justify-content: center;
+    position: relative;
+}
+
+.meme img{
+    display: block;
+    width: 105px; 
+}
+
+.meme .label{
+    display: inline-block;
+    color: #FE7F2D;
+    width: 120px;
+    margin-bottom: 20px;
+    font-size: medium;
+    word-wrap: break-word;
+    white-space: normal;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+/* 
+Colors:
+charcoal blue: 233D4D
+pumpkin: FE7F2D
+golden pollen: FCCA46
+mutted olive: A1C181
+seagrass: 619B8A
+*/
