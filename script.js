@@ -49,10 +49,6 @@ document.getElementById("submit").onclick = function(){
     }
     // checa se o salario colocado é "aceitável"
     let salary = parseFloat(document.getElementById("salary").value);
-    if(isNaN(salary)){
-        returnBox.append("digite apenas numeros!");
-        return;
-    }
 
     // dep são os dependentes
     let dep = parseInt(document.getElementById("dep").value);
@@ -62,6 +58,11 @@ document.getElementById("submit").onclick = function(){
 
     // calcula a base do imposto, com todas reduções mais comuns
     let baseCalc = (salary - inss_discount - (dep * 189.59));
+    
+    if(isNaN(salary) || isNaN(dep)){
+        returnBox.append("digite apenas numeros!");
+        return;
+    }
 
     // tabela progressiva do imposto de renda de 2025, para declaracão em 2026, a partir de maio de 2025
     // fonte: https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/tabelas/2025
@@ -76,8 +77,9 @@ document.getElementById("submit").onclick = function(){
     // procura no array "irBracket" a parte que tem os seguintes requisitos:
     // a base do calculo ser maior que o valor na tabela minimo, a base do calculo ser menor que o valor maximo na tabela
     let finalBracket = irBracket.find((base) => baseCalc >= base.start && baseCalc <= base.end);
+    console.log(finalBracket);
     // checa se o imposto é isento ou não
-    if(finalBracket.tax === 0 && finalBracket.reduce === 0){
+    if(finalBracket.start === 0){
         returnBox.append(`INSS: ${inss_discount.toFixed(2)}, IR: isento :D`);
     } else{
         console.log(finalBracket);
