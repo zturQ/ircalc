@@ -57,7 +57,7 @@ document.getElementById("submit").onclick = function(){
     let inss_discount = inssDiscount(salary);
 
     // calcula a base do imposto, com todas reduções mais comuns
-    let baseCalc = (salary - inss_discount - (dep * 189.59));
+    let baseCalc = (salary - (dep * 189.59) - inss_discount);
     
     if(isNaN(salary) || isNaN(dep)){
         returnBox.append("digite apenas numeros!");
